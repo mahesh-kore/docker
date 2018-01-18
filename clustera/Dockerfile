@@ -33,7 +33,7 @@ COPY configs.tar.gz /tmp/
 
 RUN cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artifacts.tar.gz && \
     tar xzf artifacts.tar.gz && rm -rf artifacts.tar.gz  && \
-    mv /data/artifacts/build_files/kore.repo /etc/yum.repos.d/ && \
+    mv /data/artifacts/kore.repo /etc/yum.repos.d/ && \
     curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/kore-repo-redhat7.tar.gz && \
     tar xzf kore-repo-redhat7.tar.gz && rm -rf kore-repo-redhat7.tar.gz && \
     mv /data/artifacts/startup.sh /data/ &&  \
@@ -41,8 +41,8 @@ RUN cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artif
     mv /data/artifacts/chatscriptmongo.conf /etc/ld.so.conf.d/chatscriptmongo.conf && echo "/data/java/jdk1.8.0_131//lib/amd64/jli/" >> /etc/ld.so.conf.d/chatscriptmongo.conf && ldconfig && \
     mv /data/artifacts/nvm.tar.gz /usr/local/ && cd /usr/local/ && tar xzf nvm.tar.gz && rm -rf nvm.tar.gz && \
     ln -sf /usr/local/nvm/v0.10.35/bin/node /usr/bin/node && \
-    mv /data/artifacts/build_files/checkforbuild.sh /data/kore/deployment/ && \
-    mv /data/artifacts/build_files/initdscripts.tar.gz /etc/init.d/ && cd /etc/init.d/ && tar xzf initdscripts.tar.gz && rm -rf initdscripts.tar.gz && \
+    mv /data/artifacts/checkforbuild.sh /data/kore/deployment/ && \
+    mv /data/artifacts/initdscripts.tar.gz /etc/init.d/ && cd /etc/init.d/ && tar xzf initdscripts.tar.gz && rm -rf initdscripts.tar.gz && \
     ln -sf /data/www /var/ && \
     chmod -R 777 /data/kore/deployment && \
     ulimit -n 64000 && \
