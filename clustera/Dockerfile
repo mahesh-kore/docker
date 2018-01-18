@@ -1,5 +1,5 @@
 #korebot
-FROM java-base-j8:latest
+FROM registry.access.redhat.com/rhel:7.3
 
 LABEL name="korebot" \
       maintainer="pass-services@list.db.omc" \
