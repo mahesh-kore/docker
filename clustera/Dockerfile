@@ -25,7 +25,8 @@ RUN bash -c 'mkdir -pv /data/{ChatScript,LOGS,USERS,kore,mongoc} \
                        /.forever/pids \
                        /data/java \
                        /data/kore/deployment/{logs,downloads} \
-                       /data/kore/deployment/downloads/{builder,DesktopWeb,EntAdmin,KoreServer,KoreWebPortal,MarketPlace,WorkFlows,ChatScript,FAQ,MachineLearning}'
+                       /data/kore/deployment/downloads/{builder,DesktopWeb,EntAdmin,KoreServer,KoreWebPortal,MarketPlace,WorkFlows,ChatScript,FAQ,MachineLearning} \
+                       echo `cat /tmp/artifactory.txt` '
 
 COPY artifactory.txt /tmp/
 
