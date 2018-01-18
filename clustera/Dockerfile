@@ -18,6 +18,7 @@ ENV KOREBOT_ENV dev
 
 ENV ARTIFACTORY_URL http://54.145.44.93:8040/artifactory/libs-release-local
 
+COPY artifactory.txt /tmp/
 #Directories Creation
 RUN bash -c 'mkdir -pv /data/{ChatScript,LOGS,USERS,kore,mongoc} \
                        /data/kore/{deployment,mongo_scripts,tmp,CS,postinstallation} \
@@ -28,7 +29,6 @@ RUN bash -c 'mkdir -pv /data/{ChatScript,LOGS,USERS,kore,mongoc} \
                        /data/kore/deployment/downloads/{builder,DesktopWeb,EntAdmin,KoreServer,KoreWebPortal,MarketPlace,WorkFlows,ChatScript,FAQ,MachineLearning} \
                        echo `cat /tmp/artifactory.txt` '
 
-COPY artifactory.txt /tmp/
 
 COPY configs.tar.gz /tmp/
 
