@@ -48,7 +48,7 @@ RUN cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artif
     ulimit -n 64000 && \
     yum install -y unzip logstash net-tools telnet wget libjpeg-turbo-official-1.3.0 lcms-libs-1.19-2.2 libwmf-lite-0.2.8.4-22 libGraphicsMagick3-1.3.18_Q16-6 libGraphicsMagickWand2-1.3.18_Q16-6 GraphicsMagick-1.3.18_Q16-6 nginx --disablerepo=* --enablerepo=kore && yum clean all -y && \
     chown -R 1001:root /var/cache/nginx/  /var/log/nginx/ /var/run/ && chmod -R g+rwx /var/cache/nginx/  /var/log/nginx/ /etc/logstash/ && chmod -R 777 /etc/logstash/ /.forever && \
-    rm -rf /data/kore-repo-redhat7 /etc/yum.repos.d/kore.repo /data/artifacts && \
+    rm -rf /data/kore-repo-redhat7 /etc/yum.repos.d/kore.repo && \
     chown -R 1001:root /data /var /run && \
     chmod -R g+rwxs /data/kore/deployment /data /var/ /run /.forever && chmod -R o+rwx /data/ && \
     cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/releases.tar.gz && \
@@ -73,7 +73,7 @@ RUN cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artif
     cp /data/artifacts/configs/$KOREBOT_ENV/keyserver.json /var/www/KoreServer/config && \
     cp /data/artifacts/configs/$KOREBOT_ENV/cs_init_OnPrem.txt /data/kore/CS/ && \
     cp /data/artifacts/configs/$KOREBOT_ENV/logstash-shipper.conf /etc/logstash/conf.d/ && \
-    chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data
+    chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data && rm -rf /data/artifacts
 
 USER 1001
 
