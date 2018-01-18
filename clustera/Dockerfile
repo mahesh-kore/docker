@@ -59,7 +59,7 @@ RUN cd /data && curl -LH "X-JFrog-Art-API: `cat /tmp/artifactory.txt`" -O $ARTIF
     /data/kore/deployment/checkforbuild.sh builder $KOREBOT_RELEASE && \
     /data/kore/deployment/checkforbuild.sh EntAdmin $KOREBOT_RELEASE && \
     /data/kore/deployment/checkforbuild.sh WorkFlows $KOREBOT_RELEASE && \
-    /data/kore/deployment/checkforbuild.sh MarketPlace $KOREBOT_RELEASE &&  && \
+    /data/kore/deployment/checkforbuild.sh MarketPlace $KOREBOT_RELEASE &&  \
     /data/kore/deployment/checkforbuild.sh ChatScript $KOREBOT_RELEASE && \
     ln -s /data/LOGS /data/ChatScript/LOGS && mkdir -p /var/www/logs && \
     mv /data/artifacts/integrations.conf /var/www/KoreServer/config/nginx/integrations.conf && mv /data/artifacts/static.conf /var/www/KoreServer/config/nginx/static.conf && \
