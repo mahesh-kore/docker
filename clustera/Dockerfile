@@ -73,7 +73,7 @@ RUN cd /data && curl -LH "X-JFrog-Art-API: `cat /tmp/artifactory.txt`" -O $ARTIF
     cp /data/artifacts/configs/$KOREBOT_ENV/keyserver.json /var/www/KoreServer/config && \
     cp /data/artifacts/configs/$KOREBOT_ENV/cs_init_OnPrem.txt /data/kore/CS/ && \
     cp /data/artifacts/configs/$KOREBOT_ENV/logstash-shipper.conf /etc/logstash/conf.d/ && \
-    chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data'
+    chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data
 
 USER 1001
 
