@@ -12,11 +12,11 @@ LABEL name="korebot" \
 
 RUN useradd kore -u 1001
 
-ENV KOREBOT_RELEASE
+ENV KOREBOT_RELEASE release6.0.5
 
-ENV KOREBOT_ENV
+ENV KOREBOT_ENV dev
 
-ENV ARTIFACTORY_URL
+ENV ARTIFACTORY_URL http://54.145.44.93:8040/artifactory/libs-release-local
 
 #Directories Creation
 RUN bash -c 'mkdir -pv /data/{ChatScript,LOGS,USERS,kore,mongoc} \
