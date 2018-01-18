@@ -31,10 +31,10 @@ RUN bash -c 'mkdir -pv /data/{ChatScript,LOGS,USERS,kore,mongoc} \
 COPY artifactory.txt /tmp/
 COPY configs.tar.gz /tmp/
 
-RUN cd /data && curl -LH "X-JFrog-Art-API: `cat /tmp/artifactory.txt`" -O $ARTIFACTORY_URL/artifacts.tar.gz && \
+RUN cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artifacts.tar.gz && \
     tar xzf artifacts.tar.gz && rm -rf artifacts.tar.gz  && \
     mv /data/artifacts/build_files/kore.repo /etc/yum.repos.d/ && \
-    curl -LH "X-JFrog-Art-API: `cat /tmp/artifactory.txt`" -O $ARTIFACTORY_URL/kore-repo-redhat7.tar.gz && \
+    curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/kore-repo-redhat7.tar.gz && \
     tar xzf kore-repo-redhat7.tar.gz && rm -rf kore-repo-redhat7.tar.gz && \
     mv /data/artifacts/startup.sh /data/ &&  \
     mv /data/artifacts/mongoc.tar.gz /data/ && tar xzf mongoc.tar.gz && rm -rf mongoc.tar.gz && \
@@ -51,7 +51,7 @@ RUN cd /data && curl -LH "X-JFrog-Art-API: `cat /tmp/artifactory.txt`" -O $ARTIF
     rm -rf /data/kore-repo-redhat7 /etc/yum.repos.d/kore.repo /data/artifacts && \
     chown -R 1001:root /data /var /run && \
     chmod -R g+rwxs /data/kore/deployment /data /var/ /run /.forever && chmod -R o+rwx /data/ && \
-    cd /data && curl -LH "X-JFrog-Art-API: `cat /tmp/artifactory.txt`" -O $ARTIFACTORY_URL/releases.tar.gz && \
+    cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/releases.tar.gz && \
     tar xzf releases.tar.gz && rm -rf releases.tar.gz && \
     mv /data/releases/$KOREBOT_RELEASE.tar.gz /data/ && cd /data/ && tar xvzf $KOREBOT_RELEASE.tar.gz && \
     rm -rf $KOREBOT_RELEASE.tar.gz && \
