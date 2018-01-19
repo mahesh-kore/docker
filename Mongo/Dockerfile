@@ -23,6 +23,7 @@ RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/arti
      mv /data/artifacts/redis /data/ && mv /data/artifacts/dump /data/ && \
      chmod +x /data/artifacts/*.sh  && \
      mv /data/artifacts/kore.repo /etc/yum.repos.d/ && \
+     mv /data/artifacts/startservices.sh /data/ && \
      cp /data/artifacts/mongo_unauth.conf /etc/mongo.conf && \
      ln -s /data/redis/bin/redis-cli /usr/local/bin/redis-cli && \
      echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && \
@@ -35,4 +36,4 @@ RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/arti
      rm -rf /data/artifacts &&  chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data
 	
 
-CMD ["/data/artifacts/startservices.sh"]
+CMD ["/data/startservices.sh"]
