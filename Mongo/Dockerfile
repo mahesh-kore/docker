@@ -28,7 +28,7 @@ RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/arti
      echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && \
      cp /data/artifacts/redis.conf /etc/redis.conf && \
      sed -i "s/kore123/'$REDIS_PASS'/g" /etc/redis.conf && \
-     yum install make openssl* mongodb* glibc* rabbitmq-server erlang --disablerepo=* --enablerepo=kore && yum clean all -y && \
+     yum install -y make openssl* mongodb* glibc* rabbitmq-server erlang --disablerepo=* --enablerepo=kore && yum clean all -y && \
      ln -s /usr/lib/rabbitmq/bin /usr/lib/rabbitmq/sbin && \
      cp /tmp/rabbitmq.config /etc/rabbitmq/rabbitmq.config && \
      sed -i "s/kore123/'$RMQ_PASS'/" /etc/rabbitmq/rabbitmq.config && \	
