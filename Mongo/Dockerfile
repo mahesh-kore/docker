@@ -17,9 +17,6 @@ RUN bash -c 'mkdir -p /data/mongo/db /var/lib/redis/6379 /etc/redis /opt/redis /
 EXPOSE 27017 27017
 EXPOSE 6379 6379
 
-COPY ["artifacts/mongo.repo", "artifacts/mongo_unauth.conf", "artifacts/mongo_Auth.conf", "artifacts/Mongo_PostInstall.sh", "artifacts/run.sh", "artifacts/startservices.sh", "artifacts/redis.conf","artifacts/rabbitmq.config", "/tmp/"]
-
-
 RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artifacts_stack.tar.gz && \
      tar xzf artifacts_stack.tar.gz && rm -rf artifacts_stack.tar.gz && \
      mv /data/artifacts/RPMS /tmp/ && mv /data/artifacts/redis /data/ && mv /data/artifacts/dump /data/ && \
