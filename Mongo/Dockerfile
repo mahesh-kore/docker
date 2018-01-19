@@ -32,7 +32,7 @@ RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/arti
      ln -s /usr/lib/rabbitmq/bin /usr/lib/rabbitmq/sbin && \
      cp /data/artifacts/rabbitmq.config /etc/rabbitmq/rabbitmq.config && \
      sed -i "s/kore123/'$RMQ_PASS'/" /etc/rabbitmq/rabbitmq.config && \	
-     rm -rf /data/artifacts
+     rm -rf /data/artifacts &&  chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data
 	
 
-CMD ["/tmp/startservices.sh"]
+CMD ["/data/artifacts/startservices.sh"]
