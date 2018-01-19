@@ -19,10 +19,10 @@ EXPOSE 27017 27017
 EXPOSE 6379 6379
 
 RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artifacts_stack.tar.gz && \
-     cp /data/artifacts/kore.repo /etc/yum.repos.d/ && \
      tar xzf artifacts_stack.tar.gz && rm -rf artifacts_stack.tar.gz && \
      mv /data/artifacts/RPMS /tmp/ && mv /data/artifacts/redis /data/ && mv /data/artifacts/dump /data/ && \
      chmod +x /data/artifacts/*.sh  && \
+     cp /data/artifacts/kore.repo /etc/yum.repos.d/ && \
      cp /data/artifacts/mongo_unauth.conf /etc/mongo.conf && \
      ln -s /data/redis/bin/redis-cli /usr/local/bin/redis-cli && \
      echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && \
