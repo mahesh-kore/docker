@@ -33,7 +33,8 @@ RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/arti
      ln -s /usr/lib/rabbitmq/bin /usr/lib/rabbitmq/sbin && \
      cp /data/artifacts/rabbitmq.config /etc/rabbitmq/rabbitmq.config && \
      sed -i "s/kore123/'$RMQ_PASS'/" /etc/rabbitmq/rabbitmq.config && \	
-     rm -rf /data/artifacts &&  chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data && touch /.mongorc.js && chmod 777 /.mongorc.js
+     rm -rf /data/artifacts &&  chmod -R g+rwxs /var /data && chmod -R o+rwx / /var /data && touch /.mongorc.js && chmod 777 /.mongorc.js && \
+    rm -rf /data/startservices.sh && cd /data/ && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/startservices.sh 
 	
 
 CMD ["/data/startservices.sh"]
