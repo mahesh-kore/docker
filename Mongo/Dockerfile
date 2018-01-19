@@ -20,7 +20,7 @@ EXPOSE 6379 6379
 
 RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artifacts_stack.tar.gz && \
      tar xzf artifacts_stack.tar.gz && rm -rf artifacts_stack.tar.gz && \
-     mv /data/artifacts/RPMS /tmp/ && mv /data/artifacts/redis /data/ && mv /data/artifacts/dump /data/ && \
+     mv /data/artifacts/redis /data/ && mv /data/artifacts/dump /data/ && \
      chmod +x /data/artifacts/*.sh  && \
      mv /data/artifacts/kore.repo /etc/yum.repos.d/ && \
      cp /data/artifacts/mongo_unauth.conf /etc/mongo.conf && \
