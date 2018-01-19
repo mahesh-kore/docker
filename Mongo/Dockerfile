@@ -27,6 +27,7 @@ RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/arti
      chmod +x /data/artifacts/*.sh  && \
      mv /data/artifacts/kore.repo /etc/yum.repos.d/ && \
      mv /data/artifacts/startservices.sh /data/ && \
+     mv /data/artifacts/run.sh /tmp/ && \
      cp /data/artifacts/mongo_unauth.conf /etc/mongo.conf && \
      ln -s /data/redis/bin/redis-cli /usr/local/bin/redis-cli && \
      echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && \
