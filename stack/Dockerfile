@@ -37,7 +37,7 @@ RUN mkdir -p /data/mongo/db /var/lib/redis/6379 /etc/redis /opt/redis /var/run/r
     sed -i "s/kore123/'$REDIS_PASS'/g" /etc/redis.conf && \
     ln -s /usr/lib/rabbitmq/bin /usr/lib/rabbitmq/sbin && \
     cp /data/artifacts/rabbitmq.config /etc/rabbitmq/rabbitmq.config && \
-    chmod -R g+rwxs /data /usr/lib/rabbitmq /var/run /run /etc /var/lib/rabbitmq  && chmod -R o+rwx /etc /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq /data && \
+    chmod -R g+rwxs /data /usr/lib/rabbitmq /var /run /etc /var/lib/rabbitmq  && chmod -R o+rwx /etc /usr/lib/rabbitmq /var /run /var/lib/rabbitmq /data && \
     rm -rf /data/artifact* && usermod -d /var/lib/rabbitmq rabbitmq && cd /data/ && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/run.sh && chmod 777 /data/run.sh
 
 USER 1000300044
