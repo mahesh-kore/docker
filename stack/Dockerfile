@@ -25,4 +25,4 @@ RUN mkdir /data/ && cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIF
 USER 1000300044
 EXPOSE 5672 15672
 
-CMD ["/data/run.sh"]
+CMD ["sh", "-c", "tail -f /dev/null"]
