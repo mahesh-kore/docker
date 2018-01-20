@@ -7,7 +7,6 @@ ENV MONGODB_APPLICATION_USER kore
 ENV MONGODB_APPLICATION_PASS kore123
 ENV REDIS_PASS kore123
 ENV ARTIFACTORY_URL http://54.145.44.93:8040/artifactory/libs-release-local
-ENV RMQ_PASS kore123
 
 LABEL name="korebot" \
       maintainer="pass-services@list.db.omc" \
@@ -36,7 +35,7 @@ RUN mkdir -p /data/mongo/db /var/lib/redis/6379 /etc/redis /opt/redis /var/run/r
     sed -i "s/kore123/'$REDIS_PASS'/g" /etc/redis.conf && \
     ln -s /usr/lib/rabbitmq/bin /usr/lib/rabbitmq/sbin && \
     cp /data/artifacts/rabbitmq.config /etc/rabbitmq/rabbitmq.config && \
-    sed -i "s/kore123/'$RMQ_PASS'/" /etc/rabbitmq/rabbitmq.config && \
+    sed -i "s/bash/sh/g" /tmp/Mongo_PostInstall.sh && \
     chmod -R g+rwxs /data/mongo/ /usr/lib/rabbitmq /var/run /run /etc /var/lib/rabbitmq  && chmod -R o+rwx /etc /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq /data/mongo/ && \
     rm -rf /data/artifact* && usermod -d /var/lib/rabbitmq rabbitmq && cd /data/ && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/run.sh && chmod 777 /data/run.sh
 
