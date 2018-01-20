@@ -18,7 +18,7 @@ ENV ARTIFACTORY_URL http://54.145.44.93:8040/artifactory/libs-release-local
 RUN mkdir /data/ && cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/artifacts_stack.tar.gz && \
     tar xzf artifacts_stack.tar.gz && rm -rf *.gz && \
     cp /data/artifacts/kore.repo /etc/yum.repos.d/ && \
-    yum install erlang rabbitmq-server --disablerepo=* --enablerepo=kore -y && \
+    yum install erlang rabbitmq-server --disablerepo=* --enablerepo=kore -y && yum clean all -y && \
     chmod -R g+rwxs /usr/lib/rabbitmq /var && chmod -R o+rwx /usr/lib/rabbitmq /var && \
     rm -rf /data/artifact* && usermod -u 1001430001 -g 0 rabbitmq
 
