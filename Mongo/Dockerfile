@@ -40,5 +40,4 @@ RUN  cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/arti
      rm -rf /data/artifacts &&  chmod -R g+rwxs /var /data && chmod -R o+rwx /var /data && touch /.mongorc.js && chmod 777 /.mongorc.js && \
     rm -rf /data/startservices.sh && cd /data/ && curl --user `cat /tmp/artifactory.txt` -O $ARTIFACTORY_URL/startservices.sh && chmod 777 /data/startservices.sh
 	
-USER 1001
 CMD ["/data/startservices.sh"]
