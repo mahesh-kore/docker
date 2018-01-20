@@ -29,6 +29,7 @@ RUN mkdir -p /data/mongo/db /var/lib/redis/6379 /etc/redis /opt/redis /var/run/r
     mv /data/artifacts/redis /data && ln -s /data/redis/bin/redis-cli /usr/local/bin/redis-cli && \
     cp /data/artifacts/kore.repo /etc/yum.repos.d/ && \
     yum install net-tools mongodb* erlang rabbitmq-server --disablerepo=* --enablerepo=kore -y && yum clean all -y && \
+    mv /data/artifacts/Mongo_PostInstall.sh /tmp/ && chmod 777 /tmp/Mongo_PostInstall.sh && \
     cp /data/artifacts/mongo_unauth.conf /etc/mongo.conf && \
     echo "vm.overcommit_memory=1" >> /etc/sysctl.conf && \
     cp /data/artifacts/redis.conf /etc/redis.conf && \
@@ -42,4 +43,5 @@ RUN mkdir -p /data/mongo/db /var/lib/redis/6379 /etc/redis /opt/redis /var/run/r
 USER 1000300044
 EXPOSE 5672 15672 27017 6379
 
-CMD ["sh", "-c", "tail -f /dev/null"]
+#CMD ["sh", "-c", "tail -f /dev/null"]
+CMD ["/data/run.sh"]
