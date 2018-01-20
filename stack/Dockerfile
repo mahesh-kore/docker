@@ -27,6 +27,8 @@ RUN mkdir -p /data/mongo/db /var/lib/redis/6379 /etc/redis /opt/redis /var/run/r
     tar xzf artifacts_stack.tar.gz && rm -rf *.gz && \
     mv /data/artifacts/redis /data && ln -s /data/redis/bin/redis-cli /usr/local/bin/redis-cli && \
     cp /data/artifacts/kore.repo /etc/yum.repos.d/ && \
+    cd /data/ && curl --user Software:"S8(bvqgS" -O https://korebuilds.kore.net/Software/jdk-8u131-linux-x64.tar.gz && \
+    tar xzf jdk-8u131-linux-x64.tar.gz && rm -rf jdk-8u131-linux-x64.tar.gz && \
     yum install elasticsearch* logstash  net-tools mongodb* erlang rabbitmq-server --disablerepo=* --enablerepo=kore -y && yum clean all -y && \
     mv /data/artifacts/Mongo_PostInstall.sh /tmp/ && chmod 777 /tmp/Mongo_PostInstall.sh && \
     cp /data/artifacts/mongo_unauth.conf /etc/mongo.conf && \
