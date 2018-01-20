@@ -9,7 +9,7 @@ LABEL name="korebot" \
       io.k8s.description="korebot images for kore platform" \
       io.openshift.expose-services="80 3002 1024 6000 4000" \
       io.openshift.tags="korebot,clustere"
-RUN useradd -l -u 1000170001 -g 0 rabbitmq
+RUN useradd -l -u 1000300044 -g 0 rabbitmq
 COPY artifactory.txt /tmp/
 
 ENV ARTIFACTORY_URL http://54.145.44.93:8040/artifactory/libs-release-local
@@ -22,7 +22,7 @@ RUN mkdir /data/ && cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIF
     chmod -R g+rwxs /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq  && chmod -R o+rwx /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq && \
     rm -rf /data/artifact*
 
-USER 1000170001
+USER 1000300044
 EXPOSE 5672 15672
 
 CMD ["sh", "-c", "tail -f /dev/null"]
