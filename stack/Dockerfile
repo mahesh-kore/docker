@@ -7,6 +7,7 @@ ENV MONGODB_APPLICATION_USER kore
 ENV MONGODB_APPLICATION_PASS kore123
 ENV REDIS_PASS kore123
 ENV ARTIFACTORY_URL http://54.145.44.93:8040/artifactory/libs-release-local
+ENV RMQ_PASS kore123
 
 LABEL name="korebot" \
       maintainer="pass-services@list.db.omc" \
