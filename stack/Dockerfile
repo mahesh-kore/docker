@@ -19,7 +19,7 @@ RUN mkdir /data/ && cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIF
     tar xzf artifacts_stack.tar.gz && rm -rf *.gz && \
     cp /data/artifacts/kore.repo /etc/yum.repos.d/ && \
     yum install net-tools erlang rabbitmq-server --disablerepo=* --enablerepo=kore -y && yum clean all -y && \
-    chmod -R g+rwxs /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq  && chmod -R o+rwx /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq && \
+    chmod -R g+rwxs /usr/lib/rabbitmq /var/run /run /etc/rabbitmq/ /var/lib/rabbitmq  && chmod -R o+rwx /etc/rabbitmq/ /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq && \
     rm -rf /data/artifact* && usermod -d /var/lib/rabbitmq rabbitmq
 
 USER 1000300044
