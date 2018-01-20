@@ -10,8 +10,6 @@ LABEL name="korebot" \
       io.openshift.expose-services="80 3002 1024 6000 4000" \
       io.openshift.tags="korebot,clustere"
 
-RUN useradd rabbitmq -u 1000170001
-
 COPY artifactory.txt /tmp/
 
 ENV ARTIFACTORY_URL http://54.145.44.93:8040/artifactory/libs-release-local
@@ -23,6 +21,8 @@ RUN mkdir /data/ && cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIF
     yum install erlang rabbitmq-server --disablerepo=* --enablerepo=kore -y && \
     chmod -R g+rwxs /usr/lib/rabbitmq /var && chmod -R o+rwx /usr/lib/rabbitmq /var && \
     rm -rf /data/artifacts
+
+RUN useradd -l -u 1001430001 -g 0 rabbitmq
 
 USER 1000170001
 EXPOSE 5672 15672
