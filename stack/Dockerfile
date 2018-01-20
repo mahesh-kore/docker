@@ -22,7 +22,9 @@ RUN mkdir /data/ && cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIF
     chmod -R g+rwxs /usr/lib/rabbitmq /var/run /run /etc/rabbitmq/ /var/lib/rabbitmq  && chmod -R o+rwx /etc/rabbitmq/ /usr/lib/rabbitmq /var/run /run /var/lib/rabbitmq && \
     rm -rf /data/artifact* && usermod -d /var/lib/rabbitmq rabbitmq
 
+COPY statup.sh /data/
+
 USER 1000300044
 EXPOSE 5672 15672
 
-CMD ["sh", "-c", "tail -f /dev/null"]
+CMD ["/data/statup.sh"]
