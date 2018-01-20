@@ -22,7 +22,7 @@ RUN mkdir /data/ && cd /data && curl --user `cat /tmp/artifactory.txt` -O $ARTIF
     chmod -R g+rwxs /usr/lib/rabbitmq /var && chmod -R o+rwx /usr/lib/rabbitmq /var && \
     rm -rf /data/artifacts
 
-RUN useradd -l -u 1001430001 -g 0 rabbitmq
+RUN usermod -u 1001430001 -g 0 rabbitmq
 
 USER 1000170001
 EXPOSE 5672 15672
