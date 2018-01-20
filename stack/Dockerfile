@@ -1,5 +1,5 @@
 #korebot
-FROM registry.access.redhat.com/rhel7.3:latest
+FROM docker.io/tomcat
 
 ENV MONGODB_ADMIN_USER admin
 ENV MONGODB_ADMIN_PASS admin123
